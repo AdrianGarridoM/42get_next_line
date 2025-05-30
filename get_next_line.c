@@ -6,7 +6,7 @@
 /*   By: adgarrid <adgarrid@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:49:36 by adgarrid          #+#    #+#             */
-/*   Updated: 2025/05/30 15:30:35 by adgarrid         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:01:13 by adgarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*make_line(char *leftover)
 		i++;
 	line = ft_calloc(sizeof(char), (i + 2));
 	i = 0;
-	while (leftover[i] != '\0' && leftover != '\n')
+	while (leftover[i] != '\0' && leftover[i] != '\n')
 	{
 		line[i] = leftover[i];
 		i++;
@@ -45,7 +45,7 @@ char	*ft_freejoin(char *leftover, char *tmp)
 
 char	*ft_read_line(int fd, char *leftover)
 {
-	size_t	bytes;
+	int		bytes;
 	char	*tmp;
 
 	if (!leftover)
@@ -77,7 +77,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (NULL);
-	leftover = read_line(fd, leftover);
+	leftover = ft_read_line(fd, leftover);
 	if (!leftover)
 	{
 		free(leftover);
